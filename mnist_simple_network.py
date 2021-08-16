@@ -21,7 +21,7 @@ torch.manual_seed(random_seed)
 
 # load dataset
 train_loader = torch.utils.data.DataLoader(
-  torchvision.datasets.MNIST('D:/projects_python/wide_resnet/files/', train=True, download=True,
+  torchvision.datasets.MNIST('D:/projects_python/datasets/mnist/', train=True, download=True,
                              transform=torchvision.transforms.Compose([
                                torchvision.transforms.ToTensor(),
                                torchvision.transforms.Normalize(
@@ -30,7 +30,7 @@ train_loader = torch.utils.data.DataLoader(
   batch_size=batch_size_train, shuffle=True)
 
 test_loader = torch.utils.data.DataLoader(
-  torchvision.datasets.MNIST('D:/projects_python/wide_resnet/files/', train=False, download=True,
+  torchvision.datasets.MNIST('D:/projects_python/datasets/mnist/', train=False, download=True,
                              transform=torchvision.transforms.Compose([
                                torchvision.transforms.ToTensor(),
                                torchvision.transforms.Normalize(
@@ -102,8 +102,8 @@ def train(epoch):
             train_losses.append(loss.item())
             train_counter.append(
                 (batch_idx*64) + ((epoch-1)*len(train_loader.dataset)))
-            torch.save(network.state_dict(), 'D:/projects_python/wide_resnet/results/model.pth')
-            torch.save(optimizer.state_dict(), 'D:/projects_python/wide_resnet/results/optimizer.pth')
+            torch.save(network.state_dict(), 'D:/projects_python/wide_resnet/mnist_results/model.pth')
+            torch.save(optimizer.state_dict(), 'D:/projects_python/wide_resnet/mnist_results/optimizer.pth')
 
 
 def test():
