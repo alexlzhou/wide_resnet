@@ -102,8 +102,8 @@ def train(epoch):
             train_losses.append(loss.item())
             train_counter.append(
                 (batch_idx*64) + ((epoch-1)*len(train_loader.dataset)))
-            torch.save(network.state_dict(), 'D:/projects_python/wide_resnet/mnist_results/model.pth')
-            torch.save(optimizer.state_dict(), 'D:/projects_python/wide_resnet/mnist_results/optimizer.pth')
+            torch.save(network.state_dict(), 'D:/projects_python/_results/mnist_sample/model.pth')
+            torch.save(optimizer.state_dict(), 'D:/projects_python/_results/mnist_sample/optimizer.pth')
 
 
 def test():
