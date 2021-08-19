@@ -7,6 +7,8 @@ import torch.optim as optim
 import torchvision.datasets
 import torchvision.transforms
 
+import config
+
 
 class WRN(nn.Module):
     def __init__(self):
@@ -126,22 +128,22 @@ if __name__ == '__main__':
 
 
     # hyperparameters
-    n_epochs = 200
-    epoch_step = 80
-    n_batch = 128
-    learning_rate = 0.1
-    learning_rate_decay = 0
-    learning_rate_decay_ratio = 0.2
-    weight_decay = 0.0005
-    dampening = 0
-    momentum = 0.9
-    widen_factor = 1
-    log_interval = 10
+    n_epochs = config.n_epochs
+    epoch_step = config.epoch_step
+    n_batch = config.n_batch
+    learning_rate = config.learning_rate
+    learning_rate_decay = config.learning_rate_decay
+    learning_rate_decay_ratio = config.learning_rate_decay_ratio
+    weight_decay = config.weight_decay
+    dampening = config.dampening
+    momentum = config.momentum
+    widen_factor = config.widen_factor
+    log_interval = config.log_interval
 
-    k_folds = 5
-    k_folds_results = {}
-    random_seed = 1
-    torch.backends.cudnn.enabled = True
+    k_folds = config.k_folds
+    # k_folds_results = config.k_folds_results
+    random_seed = config.random_seed
+    torch.backends.cudnn.enabled = config.cudnn_enabled
     torch.manual_seed(random_seed)
 
     train_data = torchvision.datasets.CIFAR10(
