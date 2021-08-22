@@ -108,7 +108,7 @@ if __name__ == '__main__':
                 torch.save(optimizer.state_dict(), 'D:/projects_python/_results/wrn/optimizer.pth')
 
 
-    def test():
+    def test(k):
         network.eval()
         test_loss = 0
         correct = 0
@@ -122,7 +122,7 @@ if __name__ == '__main__':
         test_loss /= len(test_loader.dataset)
         test_losses.append(test_loss)
         print('\nTest set: Avg. loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(test_loss, correct,
-                                                                                  len(test_loader.dataset),
+                                                                                  len(test_loader.dataset) / k,
                                                                                   100. * correct / len(
                                                                                       test_loader.dataset)))
 
@@ -236,4 +236,4 @@ if __name__ == '__main__':
 
         for epoch in range(1, n_epochs + 1):
             train(epoch)
-            test()
+            test(kfold.n_splits)
