@@ -13,6 +13,9 @@ import config
 class WRN(nn.Module):
     def __init__(self, *args):
         super(WRN, self).__init__()
+        if not args:
+            args = [1]
+
         # nn.SpatialConvolution(3 -> 16, 3x3, 1, 1, 1, 1)
         self.conv1 = nn.Conv2d(3, 16 * args[0], kernel_size=(3, 3), padding=1, bias=False)
         # nn.SpatialConvolution(16 -> 32, 3x3, 1, 1, 1, 1)
@@ -124,7 +127,7 @@ if __name__ == '__main__':
         print('\nTest set: Avg. loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(test_loss, correct,
                                                                                   len(test_loader.dataset) / k,
                                                                                   100. * correct / len(
-                                                                                      test_loader.dataset)))
+                                                                                      test_loader.dataset) * k))
 
 
     # hyperparameters
